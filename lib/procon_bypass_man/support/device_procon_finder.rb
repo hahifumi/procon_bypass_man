@@ -15,11 +15,10 @@ class ProconBypassMan::DeviceProconFinder
 
   # @return [String , NilClass]
   def find_device_path
-    puts "debug-<line>"
-    puts line
-    puts "debug-<hidraw_name>"
-    puts hidraw_name
+
     if(line = device_from_shell) && (hidraw_name = line.match(/(hidraw\d+)\s+/)[1])
+      puts "debug-device_from_shell"
+      puts hidraw_name
       "/dev/#{hidraw_name}"
     end
   end
