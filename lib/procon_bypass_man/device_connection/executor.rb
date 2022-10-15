@@ -18,6 +18,7 @@ class ProconBypassMan::DeviceConnection::Executer
 
   def self.execute!
     s = new_with_default_args
+    puts "a"
     s.add(expected_to_receive: [
       ["0000"],
       ["0000"],
@@ -34,6 +35,7 @@ class ProconBypassMan::DeviceConnection::Executer
     s.add(expected_to_receive: [/^0100/], read_from: :switch)
     s.add(expected_to_receive: [/^21/], read_from: :procon, call_block_if_receive: /^8101/) do |this|
       begin
+        puts "start special route"
         ProconBypassMan.logger.info "(start special route)"
         this.blocking_read_with_timeout_from_procon # <<< 810100032dbd42e9b698000
         this.write_to_procon("8002")
