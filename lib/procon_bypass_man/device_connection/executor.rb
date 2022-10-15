@@ -26,12 +26,18 @@ class ProconBypassMan::DeviceConnection::Executer
       ["0000"],
     ], read_from: :switch)
     # 1. Sends current connection status, and if the Joy-Con are connected,
+    puts "b"
     s.add(expected_to_receive: [["8001"]], read_from: :switch)
+
+    puts "c"
     s.add(expected_to_receive: [/^8101/], read_from: :procon) # <<< 81010003176d96e7a5480000000, macaddressとコントローラー番号を返す
     # 2. Sends handshaking packets over UART to the Joy-Con or Pro Controller Broadcom chip. This command can only be called once per session.
+    puts "d"
     s.add(expected_to_receive: [["8002"]], read_from: :switch)
+    puts "e"
     s.add(expected_to_receive: [/^8102/], read_from: :procon)
     # 3
+    puts "f"
     s.add(expected_to_receive: [/^0100/], read_from: :switch)
     s.add(expected_to_receive: [/^21/], read_from: :procon, call_block_if_receive: /^8101/) do |this|
       begin
