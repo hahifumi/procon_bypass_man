@@ -170,6 +170,7 @@ class ProconBypassMan::DeviceConnection::Executer
     puts "here"
 
     if path = ProconBypassMan::DeviceProconFinder.find
+      puts "aft-find"
       @procon = File.open(path, "w+b")
       ProconBypassMan.logger.info "proconのデバイスファイルは#{path}を使います"
     else
