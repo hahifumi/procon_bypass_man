@@ -103,6 +103,7 @@ module ProconBypassMan
 
     # デバイスの接続フェーズ
     begin
+      puts "デバイスの接続フェーズ"
       gadget, procon = ProconBypassMan::DeviceConnection::Command.execute!
     rescue ProconBypassMan::DeviceConnection::NotFoundProconError
       ProconBypassMan::SendErrorCommand.execute(error: "プロコンが見つかりませんでした。")
