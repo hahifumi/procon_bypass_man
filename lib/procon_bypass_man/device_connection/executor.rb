@@ -57,6 +57,7 @@ class ProconBypassMan::DeviceConnection::Executer
     puts "a"
     # 4. Forces the Joy-Con or Pro Controller to only talk over USB HID without any timeouts. This is required for the Pro Controller to not time out and revert to Bluetooth.
     s.add(expected_to_receive: [["8004"]], read_from: :switch)
+    puts "123"
     s.drain_all
     puts s.procon
     return [s.switch, s.procon]
@@ -166,6 +167,7 @@ class ProconBypassMan::DeviceConnection::Executer
     end
     ProconBypassMan::UsbDeviceController.init
     ProconBypassMan::UsbDeviceController.reset
+    puts "here"
 
     if path = ProconBypassMan::DeviceProconFinder.find
       @procon = File.open(path, "w+b")
