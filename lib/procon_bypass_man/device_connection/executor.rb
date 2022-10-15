@@ -160,7 +160,7 @@ class ProconBypassMan::DeviceConnection::Executer
       @procon = File.open(path, "w+b")
       ProconBypassMan.logger.info "proconのデバイスファイルは#{path}を使います"
     else
-      raise(ProconBypassMan::DeviceConnection::NotFoundProconError)
+      # raise(ProconBypassMan::DeviceConnection::NotFoundProconError)
     end
 
     begin
