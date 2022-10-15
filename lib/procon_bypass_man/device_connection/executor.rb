@@ -54,7 +54,7 @@ class ProconBypassMan::DeviceConnection::Executer
         raise ProconBypassMan::DeviceConnection::TimeoutErrorInConditionalRoute
       end
     end
-
+    puts "a"
     # 4. Forces the Joy-Con or Pro Controller to only talk over USB HID without any timeouts. This is required for the Pro Controller to not time out and revert to Bluetooth.
     s.add(expected_to_receive: [["8004"]], read_from: :switch)
     s.drain_all
