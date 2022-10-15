@@ -113,6 +113,7 @@ module ProconBypassMan
         terminate_pbm
       end
       return
+      puts "2"
     rescue ProconBypassMan::DeviceConnection::TimeoutError
       ProconBypassMan::SendErrorCommand.execute(error: "接続に失敗しました。プロコンとRaspberry Piのケーブルを差し直して、再実行してください。\n改善しない場合は、app.logの中身を添えて不具合報告をお願いします。")
       ProconBypassMan::DeviceStatus.change_to_connected_but_sleeping!
