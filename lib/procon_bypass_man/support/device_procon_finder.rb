@@ -1,5 +1,6 @@
 class ProconBypassMan::DeviceProconFinder
-  HID_NAME = "Nintendo Co., Ltd. Pro Controller"
+  # HID_NAME = "Nintendo Co., Ltd. Pro Controller"
+  HID_NAME = "Microsoft Corp. Xbox360 Controller"
 
   def self.find
     new.find
@@ -14,6 +15,10 @@ class ProconBypassMan::DeviceProconFinder
 
   # @return [String , NilClass]
   def find_device_path
+    puts "debug-<line>"
+    puts line
+    puts "debug-<hidraw_name>"
+    puts hidraw_name
     if(line = device_from_shell) && (hidraw_name = line.match(/(hidraw\d+)\s+/)[1])
       "/dev/#{hidraw_name}"
     end
