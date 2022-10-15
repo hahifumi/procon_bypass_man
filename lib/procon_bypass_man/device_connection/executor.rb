@@ -39,7 +39,9 @@ class ProconBypassMan::DeviceConnection::Executer
     # 3
     puts "f"
     s.add(expected_to_receive: [/^0100/], read_from: :switch)
+    puts "g"
     s.add(expected_to_receive: [/^21/], read_from: :procon, call_block_if_receive: /^8101/) do |this|
+      puts "h"
       begin
         puts "start special route"
         ProconBypassMan.logger.info "(start special route)"
