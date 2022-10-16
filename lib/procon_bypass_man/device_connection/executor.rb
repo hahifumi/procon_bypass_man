@@ -80,6 +80,7 @@ class ProconBypassMan::DeviceConnection::Executer
         begin
           timer.throw_if_timeout!
           puts "debug2-1"
+          puts from_device(item).read_nonblock(64)
           raw_data = from_device(item).read_nonblock(64)
           puts "debug2-2"
           debug_log_buffer << "read_from(#{item.read_from}): #{raw_data.unpack("H*")}"
@@ -87,7 +88,7 @@ class ProconBypassMan::DeviceConnection::Executer
           # debug_log_buffer << "read_from(#{item.read_from}): IO::EAGAINWaitReadable"
           retry
         end
-
+        puts "debug2-3"
         if item.call_block_if_receive
           ProconBypassMan.logger.info "call block if receive: #{item.call_block_if_receive}, actual: #{raw_data.unpack("H*")} from: #{item.read_from}"
           if item.call_block_if_receive =~ raw_data.unpack("H*").first
