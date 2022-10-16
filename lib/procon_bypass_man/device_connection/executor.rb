@@ -108,7 +108,9 @@ class ProconBypassMan::DeviceConnection::Executer
           debug_log_buffer << "NG(expected: #{value}, got: #{raw_data.unpack("H*")}) from: #{item.read_from}"
           raise ProconBypassMan::DeviceConnection::BytesMismatchError.new(debug_log_buffer) if @throw_error_if_mismatch
         end
+        puts "デバイス書き込み処理開始"
         to_device(item).write_nonblock(raw_data)
+        puts "デバイス書き込み処理終了"
       end
     end
   rescue ProconBypassMan::SafeTimeout::Timeout, Timeout::Error => e
