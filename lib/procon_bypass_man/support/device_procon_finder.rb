@@ -13,6 +13,8 @@ class ProconBypassMan::DeviceProconFinder
       return procon_path
     end
 
+    puts "third_party_device_path"
+    pust third_party_device_path
     if(third_party_device_path = find_third_party_device_path)
       return third_party_device_path
     end
