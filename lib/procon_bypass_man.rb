@@ -102,7 +102,8 @@ module ProconBypassMan
     end
 
     # デバイスの接続フェーズ
-    begin
+=begin
+     begin
       gadget, procon = ProconBypassMan::DeviceConnection::Command.execute!
     rescue ProconBypassMan::DeviceConnection::NotFoundProconError
       ProconBypassMan::SendErrorCommand.execute(error: "プロコンが見つかりませんでした。")
@@ -124,6 +125,7 @@ module ProconBypassMan
       eternal_sleep
       return
     end
+=end
 
     ready_pbm
     Runner.new(gadget: gadget, procon: procon).run # ここでblockingする
